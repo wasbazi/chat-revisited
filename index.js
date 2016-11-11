@@ -1,4 +1,4 @@
-var server = require("./server"),
-    socketsHandlers = require("./socketsHandlers");
+var server = require("./lib/server"),
+    socketsHandlers = require("./lib/socketsHandlers");
 
 server.start(socketsHandlers.handler);

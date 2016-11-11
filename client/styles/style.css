@@ -16,13 +16,20 @@ input {
 input:focus{
     background: #fcfcfc;
 }
-ul.nav.nav-list > li > a:hover {
+.nav-list a:hover {
     background-color: transparent;
-    cursor: default;
+    cursor: pointer;
 }
-ul.nav.nav-list > li.active > a:hover {
+.nav-list .active:hover {
     background-color: #0088cc;
 }
+
+.nav-list .active, .nav-list .active:hover {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    background-color: #0088cc;
+}
+
 /** Friends **/
 #friends-wrapper {
     width: 200px;
