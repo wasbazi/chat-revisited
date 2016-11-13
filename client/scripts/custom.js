@@ -30,7 +30,7 @@ ReservedWordsViewModel.prototype = {
 
     this.nick.subscribe(function(val){
       self.friendsList(self.friends());
-      socket.emit("setNick", { name: val} );
+      socket.emit("setNick", { name: val});
     });
 
     socket.on("friendsList", this.friendsList.bind(this));
@@ -40,8 +40,9 @@ ReservedWordsViewModel.prototype = {
   },
 
   friendJoined: function(f){
+    console.log("friendJoined", f);
     var user = this.friends().filter(function(friend) {
-      return friend.username == f.name;
+      return friend.username == f.username;
     });
 
     if (!user.length) {
@@ -83,6 +84,7 @@ ReservedWordsViewModel.prototype = {
     }
 
     this.room_type(type).room_id(id);
+    console.log("joined room", type, id);
     socket.emit("joinRoom", {type: this.room_type(), id: this.room_id()});
   },
   sendMessage: function(value){
@@ -98,7 +100,10 @@ ReservedWordsViewModel.prototype = {
     }
   },
   friendDisconnected: function(data){
-    this.friends(data.users);
+    var self = this;
+    this.friends(data.users.filter(function(user){
+      return user.username != self.nick();
+    }));
   }
 
 };
