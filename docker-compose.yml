@@ -1,0 +1,20 @@
+---
+version: "2"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: my-super-secret-password
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    command: run
+    environment:
+      POSTGRES_PASSWORD: my-super-secret-password
+      POSTGRES_HOST: db
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db

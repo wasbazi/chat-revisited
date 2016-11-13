@@ -1,13 +1,27 @@
-SimpleLobbyDataStore
-==========
+# Chat Revisited
 
-A simple chat application created using NodeJS, Express, SocketIO and Knockout.
+A while ago I wrote a chat application for a talk that I gave at a JavaScript
+meetup and decided that it would be fun to go back and fix up some of the bugs
+that I had left as well as update it to the new things I now think about
+programming.
 
-DataStore??
-----------
+## Running on your machine
 
-This implementation of the SimpleLobby uses the built in Data Storage that SocketIO has to offer. Through some minimal googling and StackOverflow it appears that the configuration of SocketIO can bet set to use your own Data Storage.
+- [node v7.1.0](https://docs.npmjs.com/getting-started/installing-node)
+- [postgres](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 
-So what?
-----------
-This opens up the posibility of using built in SocketIO functions to send/retrieve data from your favorite type of Database Software with just some simple changes to the configuration files. Isn't that snazzy?!
+```bash
+# Assuming postgress is running on your machine
+$ npm run migrate
+$ npm start
+```
+
+## Running in docker
+
+- [docker](https://www.docker.com/products/docker)
+  - [postgres image](https://hub.docker.com/_/postgres/)
+- [docker-compose](https://docs.docker.com/compose/install/)
+
+```bash
+$ docker-compose up
+```
